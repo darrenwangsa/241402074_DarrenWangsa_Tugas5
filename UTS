@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>UTS Proweb Darren Wangsa</title>
+    </head>
+    <style>
+        input{
+            width: 900px;
+            height: 30px;
+        }
+        button{
+            background: blue;
+            color: white;
+            border-color: blue;
+            border-radius: 15%;
+        }
+        .err {
+            color: red  ;
+            font-size: small;
+        }
+    </style>
+    <body>
+        <h1>Form Validasi</h1>
+        <form action="#" onsubmit="klik(this)" id="form">
+            <label for="nama"><p>Nama</label></p>
+            <input type="text" id="nama" name="nama">
+
+            <label for="email"><p>Email</label></p>
+            <input type="email" id="email" name="email">
+            <p class="err erroremail"></p>
+
+            <label for="lastName"><p>Usia</label></p>
+            <p><input type="number" id="umur" name="umur"></p>
+            <p class="err errorumur"></p>
+
+            <!-- <button type="button" id="hapusBtn" onclick="hapusData()">Hapus</button> -->
+            <button type="submit" id="submitBtn">Submit</button>
+
+        </form>
+        <script>
+            let email = document.getElementsByName("email")[0];
+            let umur = document.getElementsByName("umur")[0];
+            let errorumur = document.querySelector(".errorumur")
+            let erroremail = document.querySelector(".erroremail")
+            
+            
+            function klik(arg) {
+                
+                let emailisi = email.value
+                let umurisi = umur.value
+                let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+        
+                if (!regex.test(emailisi)) {
+                    erroremail.innerText = "Masukkan format email yang benar! Contoh: abcde@gmail.com"
+                    event.preventDefault()
+                } 
+                else {
+                    erroremail.innerText = ''
+                }
+                
+                
+                
+                if (umurisi < 1) {
+                    errorumur.innerText = "Masukkan umur dengan jujur!"
+                    event.preventDefault()
+                    
+                } 
+                else {
+                    errorumur.innerText = ''
+                        
+                }
+                }
+        </script>
+    </body>
+</html>
